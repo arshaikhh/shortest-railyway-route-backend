@@ -1,6 +1,6 @@
 import { Client } from "pg";
 import { config } from "dotenv";
-import express, { Router } from "express";
+import express from "express";
 import cors from "cors";
 import findShortestRoute from "./utils/findShortestRoute"
 config(); 

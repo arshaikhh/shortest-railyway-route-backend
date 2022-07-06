@@ -21,7 +21,11 @@ const findShortestRoute = (allTrackData:Node[], tracksWithZeroDistance:Node[], f
     }
     
     const shortestRoute:Path = (route.path(fromTrack,toTrack,{cost:true})) as Path
+    if(shortestRoute.path!==null) {
     const distanceToSubtract = getDistanceToSubtract(tracksWithZeroDistance, shortestRoute)
+
     shortestRoute.cost-=distanceToSubtract //since we converted the zero distances to 1, they have to be subtracted from the total cost
+    }
+    return shortestRoute
     }
   export default findShortestRoute

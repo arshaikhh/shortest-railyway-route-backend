@@ -2,7 +2,7 @@ import Graph from "node-dijkstra"
 import { Node, Path } from "./interfaces";
 const findShortestRoute = (allTrackData:Node[], tracksWithZeroDistance:Node[], fromTrack:string, toTrack:string) => {
     const route = new Graph()
-    let nodeData:any={}
+    let nodeData: {[key:string]:{[key:string]:number}}
     let zeroCounter=0
     for (const track of allTrackData) {
       const source = track.from_tiploc

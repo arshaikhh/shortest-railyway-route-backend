@@ -31,8 +31,8 @@ app.get("/shortestroute/:from/:to", async (req, res) => {
   try {
     const [fromStation, toStation] = [req.params.from, req.params.to];
     const dbres = await client.query('SELECT from_tiploc, to_tiploc, distance FROM tracks');
-    const filteredData = dbres.rows.filter(row=>row.distance===0)
-    const shortestRoute= findShortestRoute(dbres.rows,filteredData,fromStation, toStation)
+    
+    const shortestRoute= findShortestRoute(dbres.rows,fromStation, toStation)
     if(shortestRoute.path!==null) {
       res.json({...shortestRoute, trackLength:shortestRoute.path.length-1});
     }

@@ -8,3 +8,11 @@ export interface Path {
     path: string[],
     cost: number
 }
+
+export interface NodeData {
+    
+        [key: string]: {
+            [key: string]: number;
+        };
+    
+}

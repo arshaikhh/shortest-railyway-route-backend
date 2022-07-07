@@ -1,9 +1,8 @@
 import Graph from "node-dijkstra"
-import { Node, Path } from "./interfaces";
-const findShortestRoute = (allTrackData:Node[], tracksWithZeroDistance:Node[], fromTrack:string, toTrack:string) => {
+import { Node, NodeData, Path } from "./interfaces";
+const findShortestRoute = (allTrackData:Node[], fromTrack:string, toTrack:string) => {
     const route = new Graph()
-    let nodeData: {[key:string]:{[key:string]:number}}
-    let zeroCounter=0
+    let nodeData:NodeData={}
     for (const track of allTrackData) {
       const source = track.from_tiploc
       const neighbour = track.to_tiploc
@@ -18,7 +17,7 @@ const findShortestRoute = (allTrackData:Node[], tracksWithZeroDistance:Node[], f
 
       Alternate approach might be mapping two tracks to be the same if their distance is 0 but will require additional data store and we will lose critical information i.e. instead of showing ABWD->ABWDXR->PLMSEJ, we'd only be showing ABWD->PLMSEJ which might not be sufficient information for the user
       */
-     
+      
       nodeData[source] ={...nodeData[source], [neighbour]:distance}
       }
     
